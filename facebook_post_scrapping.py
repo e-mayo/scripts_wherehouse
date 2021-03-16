@@ -253,7 +253,8 @@ def hover(element_to_hover_over):
     try:
         hover = ActionChains(driver).move_to_element(element_to_hover_over)
         hover.perform()
-        sleep(abs(random.gauss(3, 2)))          return True
+        sleep(abs(random.gauss(3, 2)))          
+        return True
     except:
         return False
 
@@ -296,7 +297,7 @@ commentaries = []
 a = 0
 
 for c in comments:
-        try:
+    try:
         print(f'scrapping comment {a}')
         if not c:
             continue
@@ -311,8 +312,9 @@ for c in comments:
             c_info['replies'] = replies_info
         commentaries.append(c_info)
         a += 1
-        if a ==2:break
-                except:
+        if a % 100 == 0:
+            break
+    except:
         commentaries.append({f'error_{a}'})
         a += 1
 
